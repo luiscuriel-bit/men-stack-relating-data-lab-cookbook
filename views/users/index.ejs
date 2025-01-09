@@ -6,11 +6,13 @@
     <title>My Users</title>
   </head>
   <body>
+
+    <%- include("../partials/_navbar.ejs") %>
     <h1>Welcome to the Community</h1>
     <% if (users.length > 0) { %>
         <% for (let user of users) { %>
             <li><%= user.username %></li>
-            <a href="/users/<%= user._id %>/show">Show</a>.
+            <a href="/users/<%= user._id %>/show">Show</a>
         <% } %>
     <% } else { %>
         <p>There are no users to show.</p>

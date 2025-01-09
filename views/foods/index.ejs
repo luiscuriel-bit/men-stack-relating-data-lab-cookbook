@@ -6,15 +6,17 @@
     <title>My Pantry</title>
   </head>
   <body>
+
+    <%- include("../partials/_navbar.ejs") %>
+
     <h1>Welcome to my Pantry</h1>
     <% if (user.pantry.length > 0) { %>
         <% for (let food of user.pantry) { %>
-            <li><%= food.name %></li>
+            <h3><%= food.name %></h3>
             <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=delete" method="post">
                 <button type="submit">Delete</button>
             </form>
-            <a href="/users/<%= user._id %>/foods/<%= food._id %>/edit">Edit</a>.
-
+            <a href="/users/<%= user._id %>/foods/<%= food._id %>/edit">Edit</a>
         <% } %>
     <% } else { %>
         <p>There are no items in this pantry.</p>

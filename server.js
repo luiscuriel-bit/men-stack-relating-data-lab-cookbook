@@ -14,6 +14,8 @@ const passUserToView = require('./middleware/pass-user-to-view.js');
 const authController = require('./controllers/auth.js');
 const foodsController = require('./controllers/food.js');
 const usersController = require('./controllers/users.js');
+const ingredientsController = require("./controllers/ingredients.js");
+const recipesControllers = require("./controllers/recipes.js");
 
 const port = process.env.PORT ? process.env.PORT : '3000';
 
@@ -34,10 +36,14 @@ app.use(
   })
 );
 
-app.use(passUserToView)
+app.use(passUserToView);
 app.use('/auth', authController);
+
 app.use(isSignedIn);
 app.use('/users/:userId/foods', foodsController);
+app.use("/ingredients", ingredientsController);
+app.use("/recipes", recipesControllers);
+
 app.get('/', (req, res) => {
   res.render('index.ejs', {
     user: req.session.user,
@@ -58,3 +64,22 @@ app.use('/users', usersController);
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
 });
+
+
+// Index	/recipes	GET
+// New	/recipes/new	GET
+// Create	/recipes	POST
+// Show	/recipes/:recipeId	GET
+// Edit	/recipes/:recipeId/edit	GET
+// Update	/recipes/:recipeId	PUT
+// Delete	/recipes/:recipeId	DELETE
+
+// Ingredient routes
+// Action	Route	HTTP Verb
+// Index	/ingredients	GET
+// New	/ingredients/new	GET
+// Create	/ingredients	POST
+// Show	/ingredients/:ingredientId	GET
+// Edit	/ingredients/:ingredientId/edit	GET
+// Update	/ingredients/:ingredientId	PUT
+// Delete	/ingredients/:ingredientId	DELETE

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a new food</title>
+</head>
+<body>
+    
+    <%- include("../partials/_navbar.ejs");
+
+    <form action="/recipes" method="post">
+        <label for="name">Name</label>
+        <input type="text" placeholder="Name" id="name" name="name" required>
+        
+        <label for="instructions">Instructions</label>
+        <input type="text" placeholder="Instructions" id="instructions" name="instructions">
+        
+        <label for="ingredients">Ingredients</label>
+        <select name="ingredients" id="ingredients" multiple>
+            <% for (ingredient of ingredients) %>
+                <option value="<%= ingredient._id %>"><%= ingredient.name %></option>
+            <% } %>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

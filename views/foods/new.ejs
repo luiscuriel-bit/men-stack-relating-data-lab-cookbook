@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add a new food</title>
 </head>
 <body>
-    <form action="/users/:<= user._id %>/foods" method="post">
+
+    <%- include("../partials/_navbar.ejs") %>
+
+    <form action="/users/<= user._id %>/foods" method="post">
         <label for="name">Food</label>
         <input type="text" placeholder="Name" id="name" name="name" required>
 

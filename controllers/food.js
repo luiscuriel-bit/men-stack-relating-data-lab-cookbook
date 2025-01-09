@@ -8,7 +8,6 @@ router.get('/', async (req, res) => {
     try {
         const user = await User.findById(req.session.user._id);
         res.render('foods/index.ejs', { user });
-
     } catch (error) {
         console.error(error);
         res.redirect('/');
@@ -46,7 +45,7 @@ router.delete("/:itemId", async (req, res) => {
 router.get("/:itemId/edit", async (req, res) => {
     try {
         const user = await User.findById(req.session.user._id);
-        res.render("foods/edit.ejs", {food: user.pantry.id(req.params.itemId)});
+        res.render("foods/edit.ejs", { food: user.pantry.id(req.params.itemId) });
     } catch (error) {
         console.error(error);
         res.redirect('/');
